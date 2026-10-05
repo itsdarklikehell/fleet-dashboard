@@ -24,21 +24,34 @@
     <div class="grid">
       <div class="card">
         <h3>Scripts</h3>
-        <div class="value">188</div>
+        <div class="value" id="stat-scripts">—</div>
       </div>
       <div class="card">
         <h3>Cron Jobs</h3>
-        <div class="value">34</div>
+        <div class="value" id="stat-cron">—</div>
       </div>
       <div class="card">
         <h3>Repos</h3>
-        <div class="value">50</div>
+        <div class="value" id="stat-repos">—</div>
       </div>
       <div class="card">
         <h3>Services</h3>
-        <div class="value status-ok">5/5</div>
+        <div class="value" id="stat-services">—</div>
       </div>
     </div>
   </div>
+  <script type="module">
+    import { getFleetData, getServiceStatus, formatServiceStatus } from './js/data.js';
+
+    const data = getFleetData();
+
+    document.getElementById('stat-scripts').textContent = data.scripts;
+    document.getElementById('stat-cron').textContent = data.cronJobs;
+    document.getElementById('stat-repos').textContent = data.repos;
+
+    const servicesEl = document.getElementById('stat-services');
+    servicesEl.textContent = formatServiceStatus(data.services);
+    servicesEl.classList.add(getServiceStatus(data.services.healthy, data.services.total));
+  </script>
 </body>
 </html>

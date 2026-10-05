@@ -1,14 +1,8 @@
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-*.egg-info/
+node_modules/
 dist/
-build/
-.venv/
-venv/
+coverage/
 .env
+.env.local
 *.log
 .DS_Store
 Thumbs.db
@@ -19,5 +13,4 @@ Thumbs.db
 *.orig
 test-report.txt
 .pytest_cache/
-.coverage
 htmlcov/
